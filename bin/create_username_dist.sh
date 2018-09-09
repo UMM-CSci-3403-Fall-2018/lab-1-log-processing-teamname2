@@ -10,12 +10,7 @@ cat html_components/username_dist_header.html >> $1/username_dist.html
 # uniq then counts the occurances of the names
 # awk then constructs a string that will be used to add data to our chart
 # cat finally prints all of it into username_dist.html
-find $1 -name "failed_login_data.txt" -exec 
-awk '{print $4}' {} + | 
-sort | 
-uniq -c | 
-awk '{print "data.addRow([\x27"$2"\x27, "$1"]);"}' | 
-cat >> $1/username_dist.html
+find $1 -name "*failed_login_data*" -exec awk '{print $4}' {} + | sort | uniq -c | awk '{print "data.addRow([\x27"$2"\x27, "$1"]);"}' | cat >> $1/username_dist.html
 
 # Add the footer
 cat html_components/username_dist_footer.html >> $1/username_dist.html
