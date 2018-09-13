@@ -1,10 +1,14 @@
 #!/bin/bash
 
-# Add the contents of a specified header to the desired output file, argument 3, where the name of the specific header is argument 2
-cat $2_header.html >> $3
+# Contents for the output file which contains important data
+CONTENTS=$1
 
-# Add the data to the desired output file, where the data is argument 1
-cat $1 >> $3
+# Header and footer for the output file that adds the name and .html extensions
+HEADER=$2_header.html
+FOOTER=$2_footer.html
 
-# Add the contents of a specified footer to the desired output file, argument 3, where the name of the specific footer is argument 2
-cat $2_footer.html >> $3
+# The resulting output file
+RESULT=$3
+
+# Concatenate the header, contents, and footer to create a reuslting output file
+cat $HEADER $CONTENTS $FOOTER > $RESULT
